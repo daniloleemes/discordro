@@ -1,0 +1,32 @@
+login-server: open char socket
+
+char-server -> login-server
+	char_check_connect_logserver.cpp:chlogif_check_connect_logserver
+
+login-server -> char-server
+	loginclif.cpp:logclif_parse_reqcharconnec
+
+
+
+
+char-server : open map socket
+
+
+
+map-server -> char-server
+	check_connect_char_server
+	
+	
+char-server -> map-server
+	chclif_parse_maplogin
+
+map-server : open client socket 
+	
+map-server : open discord socket
+	disif.cpp:do_init_disif
+
+discord server -> map-server
+	test.py
+
+map-server -> discord server
+	disif.cpp:disif_parse_login
